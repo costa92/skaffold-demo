@@ -5,9 +5,9 @@
 ```sh
 mkdir demo  && cd demo
 go mod init github.com/costa92/skaffold-demo
+```
 
-# 初始 skaffold
-
+## 初始 skaffold
 ```sh
 skaffold init --generate-manifests
 ```
