@@ -118,3 +118,4 @@ skaffold run
 
 ## 参考：
 - [kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
+- [RBAC 中文文档]( https://kubernetes.io/zh-cn/docs/reference/access-authn-authz/rbac/#role-and-clusterole)
