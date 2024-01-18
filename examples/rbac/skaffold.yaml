@@ -1,0 +1,24 @@
+apiVersion: skaffold/v4beta9
+kind: Config
+metadata:
+  name: demo
+# 设置构建配置  
+build:
+  platforms: ["linux/amd64", "linux/arm64"]
+  artifacts:
+    - image: costa92/go-mod-image
+      buildpacks:
+        builder: gcr.io/buildpacks/builder:v1
+
+deploy:
+    kubectl:
+      remoteManifests:
+      - k8s/role-cluster.yaml
+      - k8s/deployment.yaml
+      - k8s/service.yaml
+
+portForward:
+  - resourceType: service
+    resourceName: go-mod-image
+    port: 8000  # 远程的端口
+    # localPort: 8001 # 本地端口，可以不指定，那样每次都会随机分配一个新的端口

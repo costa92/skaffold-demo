@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: skaffold
+---
+# https://kubernetes.io/zh-cn/docs/reference/access-authn-authz/rbac/#role-and-clusterole
+# 该文件定义了一个 ClusterRole，它允许用户查看 Pod 和 Node 资源
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: skaffold-example-clusterrole
+  # "namespace" 被忽略，因为 ClusterRoles 不受名字空间限制
+#  namespace: default
+rules:
+  - apiGroups: [""]
+    resources: ["pods","nodes"]
+    verbs: ["get", "watch", "list"]
+---
+# Path: k8s/clusterrolebinding.yaml
+# 该文件定义了一个 ClusterRoleBinding，它将用户 skaffold 与 ClusterRole skaffold-example-clusterrole 绑定
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: skaffold-example-clusterrolebinding
+roleRef:
+  kind: ClusterRole
+  name: skaffold-example-clusterrole
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: skaffold
+  namespace: default
+
