@@ -5,8 +5,12 @@ metadata:
 # 设置构建配置  
 build:
   platforms: ["linux/amd64", "linux/arm64"]
+#  cluster:
+#    pullSecretName: kaniko-secret
   artifacts:
     - image: costa92/go-mod-image
+#      kaniko:
+#        cache: {}
       buildpacks:
         builder: gcr.io/buildpacks/builder:v1
 
