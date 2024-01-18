@@ -116,6 +116,24 @@ skaffold run
 
 ```
 
+使用 InClusterConfig 查看 treafik 代码 k8s 
+[treafik github](https://github.com/traefik/traefik/blob/master/pkg/provider/kubernetes/crd/client.go#L99)
+
+```shell
+func newInClusterClient(endpoint string) (*clientWrapper, error) {
+	config, err := rest.InClusterConfig()
+	if err != nil {
+		return nil, fmt.Errorf("failed to create in-cluster configuration: %w", err)
+	}
+
+	if endpoint != "" {
+		config.Host = endpoint
+	}
+
+	return createClientFromConfig(config)
+}
+```
+
 ## 参考：
 - [kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
 - [RBAC 中文文档]( https://kubernetes.io/zh-cn/docs/reference/access-authn-authz/rbac/#role-and-clusterole)
