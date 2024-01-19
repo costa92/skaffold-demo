@@ -24,7 +24,7 @@ build:
           - gcr.io/distroless/static:nonroot
         dockerfile: Dockerfile
 ```
-## 使用 skaffold kaniko 构建镜像 [文档](https://skaffold-latest.firebaseapp.com/docs/pipeline-stages/builders/ko/)
+## 使用 skaffold ko 构建镜像 [文档](https://skaffold-latest.firebaseapp.com/docs/pipeline-stages/builders/ko/)
 
 ```yaml
 # 设置构建配置  
