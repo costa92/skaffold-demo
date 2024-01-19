@@ -9,7 +9,10 @@ build:
   artifacts:
     - image: costa92/go-mod-image
       ko:
-        fromImage: gcr.io/distroless/base:debug-nonroot
+        # fromImage: gcr.io/distroless/base:debug-nonroot
+        fromImage: cgr.dev/chainguard/glibc-dynamic
+        env:
+        - GOPRIVATE=git.internal.example.com,source.developers.google.com   
 #      buildpacks:
 #        builder: gcr.io/buildpacks/builder:v1
 deploy:
