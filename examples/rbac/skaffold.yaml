@@ -8,8 +8,10 @@ build:
 #  cluster: {}
   artifacts:
     - image: costa92/go-mod-image
-      buildpacks:
-        builder: gcr.io/buildpacks/builder:v1
+      ko:
+        fromImage: gcr.io/distroless/base:debug-nonroot
+#      buildpacks:
+#        builder: gcr.io/buildpacks/builder:v1
 deploy:
     kubectl:
       remoteManifests:
