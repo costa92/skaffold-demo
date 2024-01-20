@@ -49,5 +49,6 @@ func printJson(obj interface{}, err error) {
 	if err != nil {
 		log.Fatal("序列化失败!", err)
 	}
+  log.Println("printJson")
 	fmt.Println(string(data))
 }
